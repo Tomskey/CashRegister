@@ -1,4 +1,5 @@
 import model.ProductEntity;
+import model.ReceiptEntity;
 import org.junit.Before;
 import org.junit.Test;
 import printer.PrintManager;
@@ -9,7 +10,6 @@ import java.util.List;
 
 public class PrinterTest {
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
-    List<ProductEntity> receipt = new ArrayList<ProductEntity>();
     PrintManager printManager = new PrintManager();
 
     @Before

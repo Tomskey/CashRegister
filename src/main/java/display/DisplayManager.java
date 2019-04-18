@@ -2,6 +2,7 @@ package display;
 
 import model.ProductEntity;
 import printer.PrintManager;
+import productScanner.ScannerManager;
 
 
 import java.util.HashMap;
@@ -13,25 +14,31 @@ public class DisplayManager {
     ProductEntity productEntity = new ProductEntity();
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
     Integer barCode;
+    ScannerManager scannerManager;
 
-    public DisplayManager(HashMap<Integer, ProductEntity> inMemoryProductMap, Integer barCode) {
+    public DisplayManager(HashMap<Integer, ProductEntity> inMemoryProductMap, Integer barCode,
+                          ScannerManager scannerManager) {
         this.inMemoryProductMap = inMemoryProductMap;
         this.barCode = barCode;
+        this.scannerManager = scannerManager;
+    }
+
+    public DisplayManager() {
+    }
+
+    public DisplayManager(ScannerManager scannerManager) {
+        this.scannerManager = scannerManager;
     }
 
 
-    public String displayProductDetails(){
-        ProductEntity productEntity = new ProductEntity();
+    public void displayProductDetails(Integer barCode,HashMap<Integer, ProductEntity> inMemoryProductMap){
+        ProductEntity productEntity;
         productEntity = inMemoryProductMap.get(barCode);
 
-        return "Name: " + productEntity.getName() + " Price: " + productEntity.getPrice().toString();
-
+        System.out.println("Name: " + productEntity.getName() + " Price: " + productEntity.getPrice().toString());
+        System.out.println("Total Sum" + scannerManager.getTotalSum().toString());
     }
 
-    public String displayTotalPrice(){
-        PrintManager printManager = new PrintManager();
-        return printManager.totalSum();
-    }
 
 
 

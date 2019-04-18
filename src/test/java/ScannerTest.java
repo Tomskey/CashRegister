@@ -1,4 +1,5 @@
 import model.ProductEntity;
+import model.ReceiptEntity;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 
 public class ScannerTest {
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
+    ReceiptEntity receiptEntity = new ReceiptEntity();
 
     @Before
     public void generateDefaultProductsMap(){
@@ -24,8 +26,14 @@ public class ScannerTest {
         Integer c = 100;
 
         ScannerManager scannerManager = new ScannerManager(b,inMemoryProductMap);
-        Assert.assertTrue(scannerManager.checkIfCodeExist());
+        Assert.assertTrue(scannerManager.checkIfCodeExist(b,inMemoryProductMap));
     }
+
+   /* @Test
+    public void shouldAddToReceiptIfCodeExist(){
+        ScannerManager scannerManager = new ScannerManager(,inMemoryProductMap);
+        receiptEntity.getReceipt()=
+    }*/
 
 }
 

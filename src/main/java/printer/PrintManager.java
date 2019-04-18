@@ -3,6 +3,7 @@ package printer;
 import DataInMemory.InMemoryReceipt;
 import model.ProductEntity;
 import model.ReceiptEntity;
+import productScanner.ScannerManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,36 +19,27 @@ public class PrintManager {
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
     Integer barCode;
 
-    public PrintManager(HashMap<Integer, ProductEntity> inMemoryProductMap, Integer barCode) {
+    ScannerManager scannerManager;
+    public PrintManager(HashMap<Integer, ProductEntity> inMemoryProductMap, Integer barCode, ScannerManager scannerManager) {
 
         this.inMemoryProductMap = inMemoryProductMap;
         this.barCode = barCode;
+        this.scannerManager = scannerManager;
     }
 
     public PrintManager() {
     }
 
-    public List<ProductEntity> addProductToReceipt(Integer scanCode){
-         products.add(inMemoryProductMap.get(scanCode));
-         return products;
-    }
-
-    public String totalSum(){
-        Double sum = 0.0;
-        for (ProductEntity productEntity : products){
-            sum += productEntity.getPrice();
-        }
-        return sum.toString();
+    public PrintManager(ScannerManager scannerManager) {
+        this.scannerManager = scannerManager;
     }
 
 
-    public List<String> printReceipt(){
-        List<String> receipt = new ArrayList<String>();
-        for (ProductEntity productEntity : products){
-            receipt.add("Name: " + productEntity.getName() + " Price: " + productEntity.getPrice().toString());
-        }
-        receipt.add("Total Sum: " + totalSum());
-        return receipt;
+    public void printReceipt(){
+        for(String product: scannerManager.getReceipt())
+        System.out.println(product);
+
+        System.out.println("Total Sum: " + scannerManager.getTotalSum().toString());
 
     }
 }

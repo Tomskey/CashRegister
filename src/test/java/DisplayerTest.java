@@ -16,8 +16,9 @@ public class DisplayerTest {
 
     @Test
     public void shouldDisplayProductFromMap(){
-        DisplayManager displayManager = new DisplayManager(inMemoryProductMap,1);
-        System.out.println(displayManager.displayProductDetails());
+        Double totalSum = 2.99;
+        DisplayManager displayManager = new DisplayManager();
+        displayManager.displayProductDetails(1,inMemoryProductMap);
     }
 
 }

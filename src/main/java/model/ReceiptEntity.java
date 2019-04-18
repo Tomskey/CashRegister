@@ -1,12 +1,22 @@
 package model;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ReceiptEntity {
 
+
+
     List<ProductEntity> products;
 
     Double totalPrice;
+
+    public HashMap<Integer, ProductEntity> getReceipt() {
+        return receipt;
+    }
+
+    HashMap<Integer, ProductEntity> receipt = new HashMap<Integer, ProductEntity>();
+
 
     public List<ProductEntity> getProducts() {
         return products;
@@ -22,5 +32,9 @@ public class ReceiptEntity {
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void setProducts(List<ProductEntity> products) {
+        this.products = products;
     }
 }
