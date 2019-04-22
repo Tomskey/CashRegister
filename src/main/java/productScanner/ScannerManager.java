@@ -1,66 +1,57 @@
 package productScanner;
 
+
 import DataInMemory.InMemoryProduct;
 import model.ProductEntity;
 import model.ReceiptEntity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ScannerManager {
 
-    Integer newBarCode;
 
-    HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
+    InMemoryProduct inMemoryProduct;
 
     Double totalSum = 0.0;
 
-    ReceiptEntity receiptEntity = new ReceiptEntity();
+    ReceiptEntity receiptEntity;
 
-    List<String> receipt;
 
-    public List<String> getReceipt() {
-        return receipt;
-    }
-
-    public ScannerManager(Integer newBarCode, HashMap<Integer, ProductEntity> inMemoryProductMap) {
-        this.newBarCode = newBarCode;
-        this.inMemoryProductMap = inMemoryProductMap;
-    }
-
-    public ScannerManager() {
-    }
-
-    public boolean checkIfCodeExist(Integer newBarCode, HashMap<Integer, ProductEntity> inMemoryProductMap) {
-        return inMemoryProductMap.containsKey(newBarCode);
+    public List<String> getReceiptFromEntity() {
+        return receiptEntity.getReceipt();
     }
 
     public Double getTotalSum() {
         return totalSum;
     }
 
+    public HashMap<Integer, ProductEntity> getInMemoryProductMap() {
+        return inMemoryProduct.getInMemoryProductMap();
+    }
+
+    public void setScannerMemory(HashMap<Integer, ProductEntity> inMemoryProductMap) {
+        inMemoryProduct = new InMemoryProduct(inMemoryProductMap);
+    }
+
+    public boolean checkIfCodeExist(Integer newBarCode) {
+        return inMemoryProduct.getInMemoryProductMap().containsKey(newBarCode);
+    }
+
     public void makeReceipt() {
-        receipt = new ArrayList<String>();
-
+        receiptEntity = new ReceiptEntity();
     }
 
-    public void makeReceiptEntity(){
-        receipt = receiptEntity.getReceipt();
-    }
-
-    public void countTotalSum( Integer barCode,HashMap<Integer, ProductEntity> inMemoryProductMap){
-        ProductEntity tempProduct = inMemoryProductMap.get(barCode);
+    public void countTotalSum(Integer barCode) {
+        ProductEntity tempProduct = inMemoryProduct.getProductFromMemory(barCode);
         totalSum += tempProduct.getPrice();
-
+        totalSum = Math.round(totalSum * 100d) / 100d;
     }
 
-    public void addProductToReceiptIfCodeExist(Integer barCode,
-                                               HashMap<Integer, ProductEntity> inMemoryProductMap){
-
-        ProductEntity tempProduct = inMemoryProductMap.get(barCode);
-        String tempString = "Name: " + tempProduct.getName() + " Price: " + tempProduct.getPrice().toString();
-        receipt.add(tempString);
+    public void addProductToReceipt(Integer barCode) {
+        ProductEntity tempProduct = inMemoryProduct.getProductFromMemory(barCode);
+        String tempString = "Name: " + tempProduct.getName() + " | Price: " + tempProduct.getPrice().toString();
+        receiptEntity.addProduct(tempString);
     }
 
 }

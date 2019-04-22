@@ -15,10 +15,6 @@ public class ProductEntity {
         this.barCode = barCode;
     }
 
-    public ProductEntity(){
-
-    }
-
     public String getName() {
         return name;
     }

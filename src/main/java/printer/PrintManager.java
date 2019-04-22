@@ -1,28 +1,13 @@
 package printer;
 
-import model.ProductEntity;
+
 import productScanner.ScannerManager;
 
-import java.util.HashMap;
-import java.util.List;
 
 public class PrintManager {
 
 
-
-    List<ProductEntity> products;
-
-
-    HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
-    Integer barCode;
-
     ScannerManager scannerManager;
-    public PrintManager(HashMap<Integer, ProductEntity> inMemoryProductMap, Integer barCode, ScannerManager scannerManager) {
-
-        this.inMemoryProductMap = inMemoryProductMap;
-        this.barCode = barCode;
-        this.scannerManager = scannerManager;
-    }
 
     public PrintManager() {
     }
@@ -32,9 +17,10 @@ public class PrintManager {
     }
 
 
-    public void printReceipt(){
-        for(String product: scannerManager.getReceipt())
-        System.out.println(product);
+    public void printReceipt() {
+        System.out.println("RECEIPT");
+        for (String product : scannerManager.getReceiptFromEntity())
+            System.out.println(product);
 
         System.out.println("Total Sum: " + scannerManager.getTotalSum().toString());
 

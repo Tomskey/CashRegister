@@ -10,18 +10,8 @@ import java.util.HashMap;
 
 public class DisplayManager {
 
-
-
-    HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
-    Integer barCode;
     ScannerManager scannerManager;
 
-    public DisplayManager(HashMap<Integer, ProductEntity> inMemoryProductMap, Integer barCode,
-                          ScannerManager scannerManager) {
-        this.inMemoryProductMap = inMemoryProductMap;
-        this.barCode = barCode;
-        this.scannerManager = scannerManager;
-    }
 
     public DisplayManager() {
     }
@@ -31,11 +21,16 @@ public class DisplayManager {
     }
 
 
-    public void displayProductDetails(Integer barCode,HashMap<Integer, ProductEntity> inMemoryProductMap){
+    public void displayProductDetails(Integer barCode) {
         ProductEntity productEntity;
-        productEntity = inMemoryProductMap.get(barCode);
+        productEntity = scannerManager.getInMemoryProductMap().get(barCode);
 
         System.out.println("Name: " + productEntity.getName() + " Price: " + productEntity.getPrice().toString());
+
+    }
+
+    public void displayTotalSum() {
+
         System.out.println("Total Sum: " + scannerManager.getTotalSum().toString());
     }
 
