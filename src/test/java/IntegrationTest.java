@@ -16,10 +16,6 @@ public class IntegrationTest {
     DisplayManager displayManager = new DisplayManager(scannerManager);
     PrintManager printManager = new PrintManager(scannerManager);
 
-    List<String> receipt;
-
-
-
 
     @Before
     public void setUp(){
@@ -54,6 +50,24 @@ public class IntegrationTest {
 
     @Test
     public void shouldPrintReceiptWithOneWrongBarCode(){
+        Integer[] barCode = new Integer[3];
+        barCode[0] = 1;
+        barCode[1] = 2;
+        barCode[2] = 4;
+
+        scannerManager.makeReceiptEntity();
+        for(int i = 0; i<3 ; i++) {
+            if (scannerManager.checkIfCodeExist(barCode[i],inMemoryProductMap)) {
+                scannerManager.countTotalSum(barCode[i], inMemoryProductMap);
+                scannerManager.addProductToReceiptIfCodeExist(barCode[i],inMemoryProductMap);
+                displayManager.displayProductDetails(barCode[i], inMemoryProductMap);
+            } else System.out.println("Product not found");
+
+            System.out.println("End of Transaction?");
+            if (i == 2) {
+                printManager.printReceipt();
+            }
+        }
 
     }
 

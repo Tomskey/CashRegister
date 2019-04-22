@@ -9,17 +9,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ScannerManager {
-    //InMemoryProduct inMemoryProduct = new InMemoryProduct();
 
     Integer newBarCode;
 
-    ReceiptEntity receiptEntity = new ReceiptEntity();
-
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
 
-
-
     Double totalSum = 0.0;
+
+    ReceiptEntity receiptEntity = new ReceiptEntity();
 
     List<String> receipt;
 
@@ -46,6 +43,10 @@ public class ScannerManager {
     public void makeReceipt() {
         receipt = new ArrayList<String>();
 
+    }
+
+    public void makeReceiptEntity(){
+        receipt = receiptEntity.getReceipt();
     }
 
     public void countTotalSum( Integer barCode,HashMap<Integer, ProductEntity> inMemoryProductMap){

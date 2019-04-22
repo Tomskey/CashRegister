@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class DisplayManager {
 
 
-    ProductEntity productEntity = new ProductEntity();
+
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
     Integer barCode;
     ScannerManager scannerManager;
@@ -36,17 +36,8 @@ public class DisplayManager {
         productEntity = inMemoryProductMap.get(barCode);
 
         System.out.println("Name: " + productEntity.getName() + " Price: " + productEntity.getPrice().toString());
-        System.out.println("Total Sum" + scannerManager.getTotalSum().toString());
+        System.out.println("Total Sum: " + scannerManager.getTotalSum().toString());
     }
 
-
-
-
-    /*public void setTotalPrice(){
-        sumPrice+=productEntity.getPrice();
-    }
-
-
-    }*/
 
 }

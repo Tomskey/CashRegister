@@ -1,11 +1,8 @@
 package printer;
 
-import DataInMemory.InMemoryReceipt;
 import model.ProductEntity;
-import model.ReceiptEntity;
 import productScanner.ScannerManager;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
