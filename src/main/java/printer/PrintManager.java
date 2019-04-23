@@ -9,8 +9,6 @@ public class PrintManager {
 
     ScannerManager scannerManager;
 
-    public PrintManager() {
-    }
 
     public PrintManager(ScannerManager scannerManager) {
         this.scannerManager = scannerManager;

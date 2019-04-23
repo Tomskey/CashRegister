@@ -1,7 +1,7 @@
 package productScanner;
 
 
-import DataInMemory.InMemoryProduct;
+import repository.InMemoryProduct;
 import model.ProductEntity;
 import model.ReceiptEntity;
 

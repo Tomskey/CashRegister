@@ -5,10 +5,12 @@ import org.junit.Test;
 import printer.PrintManager;
 import productScanner.ScannerManager;
 
+
 import java.util.HashMap;
 
 
 public class IntegrationTest {
+
 
     HashMap<Integer, ProductEntity> inMemoryProductMap = new HashMap<Integer, ProductEntity>();
     ScannerManager scannerManager = new ScannerManager();

@@ -1,4 +1,4 @@
-package DataInMemory;
+package repository;
 
 import java.util.HashMap;
 
@@ -12,6 +12,7 @@ public class InMemoryProduct {
     public InMemoryProduct(HashMap<Integer, ProductEntity> inMemoryProductMap) {
         this.inMemoryProductMap = inMemoryProductMap;
     }
+
 
     public HashMap<Integer, ProductEntity> getInMemoryProductMap() {
         return inMemoryProductMap;

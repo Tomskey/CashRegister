@@ -17,7 +17,6 @@ public class ScannerTest {
         inMemoryProductMap.put(2, new ProductEntity("Chips", 1.99, 2));
         inMemoryProductMap.put(3, new ProductEntity("Water", 0.99, 3));
         scannerManager.setScannerMemory(inMemoryProductMap);
-
     }
 
     @Test
@@ -52,19 +51,3 @@ public class ScannerTest {
 
 }
 
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
- */
